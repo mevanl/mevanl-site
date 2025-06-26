@@ -1,4 +1,4 @@
-# Running
+# Local Running
 1. Install required packages
 ```bash
 pip install -r requirements.txt
