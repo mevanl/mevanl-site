@@ -20,4 +20,4 @@ def load_markdown_file(path: Path) -> dict[str, str | dict[str, str]]:
     
     html: str = markdown.markdown(body, extensions=["fenced_code", "codehilite"])
 
-    return {"html": html, "raw": body, "meta": metadata} 
+    return {"html": html, "raw": body, "metadata": metadata} 
