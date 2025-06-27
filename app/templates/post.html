@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ post.metadata.title if post.metadata.title else name }}{% endblock %}
+
+{% block content %}
+<article class="post">
+  <h1>{{ post.metadata.title if post.metadata.title else name }}</h1>
+  <p class="meta">{{ post.metadata.date }}</p>
+
+  <div class="post-body">
+    {{ post.content | safe }}
+  </div>
+</article>
+
+{% if project %}
+  <a href="/devlogs/{{ project }}/">Back to {{ project }} Devlogs</a>
+{% else %}
+  <a href="/blog">Back to Blog</a>
+{% endif %}
+{% endblock %}

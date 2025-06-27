@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ project }} Devlogs{% endblock %}
+
+{% block content %}
+
+<h1>Devlog for {{ project }}</h1>
+
+{% if posts %}
+  {% for post in posts %}
+    <div class="post-summary">
+      <h2><a href="{{ post.name }}">{{ post.title }}</a></h2>
+      <p class="meta">{{ post.date }}</p>
+      <p>{{ post.summary }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No devlog entries yet for this project.</p>
+{% endif %}
+
+<a href="/devlogs">Back to projects</a>
+
+{% endblock %}

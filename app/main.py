@@ -16,5 +16,5 @@ templates: Jinja2Templates = Jinja2Templates(directory="app/templates")
 # routers
 app.include_router(homepage.router)
 app.include_router(blog.router, prefix="/blog")
-app.include_router(devlog.router, prefix="/devlog")
+app.include_router(devlog.router, prefix="/devlogs")
 

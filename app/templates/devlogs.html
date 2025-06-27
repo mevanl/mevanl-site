@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Devlogs{% endblock %}
+
+{% block content %}
+
+<h1>Devlog Projects</h1>
+
+<ul class="project-list">
+  {% for project in projects %}
+    <li>
+      <a href="{{ project }}/">{{ project }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

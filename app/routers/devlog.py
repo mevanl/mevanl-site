@@ -14,7 +14,7 @@ templates: Jinja2Templates = Jinja2Templates(directory="app/templates")
 async def list_projects(request: Request) -> HTMLResponse:
 
     projects: list[str] = [p.name for p in DEVLOG_DIR.iterdir() if p.is_dir()]
-    return templates.TemplateResponse("devlog.html", {"request": request, "projects": projects})
+    return templates.TemplateResponse("devlogs.html", {"request": request, "projects": projects})
 
 @router.get("/{project}/", response_class=HTMLResponse)
 async def list_devlogs(request: Request, project: str) -> HTMLResponse: 
