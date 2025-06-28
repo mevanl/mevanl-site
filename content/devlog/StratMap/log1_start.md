@@ -1,5 +1,5 @@
 ---
-title: Log 1: Initial Start
+title: Log 1 - Initial Start
 date: 2025-06-28
 summary: Start of project, using satellite map, political borders
 ---
