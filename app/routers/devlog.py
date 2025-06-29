@@ -37,7 +37,7 @@ async def list_devlogs(request: Request, project: str) -> HTMLResponse:
             "summary": meta.get("summary", "")
             })
 
-    # posts.sort(key=lambda p: p.get("date") or "", reverse=True)
+    posts.sort(key=lambda p: p.get("date") or "", reverse=True)
 
     return templates.TemplateResponse("devlog_project.html", {
         "request": request,
