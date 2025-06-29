@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -37,8 +37,7 @@ async def get_post(request: Request, post_name: str) -> HTMLResponse:
     path: Path = BLOG_DIR / f"{post_name}.md"
 
     if not path.exists():
-        # TODO: have a 404.html to be fancy 
-        return HTMLResponse("Post not found", status_code=404)
+        raise HTTPException(status_code=404, detail="post not found")
 
     post: dict[str, str | dict[str, str]] = load_markdown_file(path)
 
