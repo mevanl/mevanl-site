@@ -45,6 +45,7 @@ const map = new maplibregl.Map({
 That is all it takes to render and display a map onto the screen! Not even 15 lines of code. This works fine for what it is, however if we want to build a system, we will need to implement some architecture to seperate out our code into useful modules instead of one big main file. 
 
 Inside my source folder:
+```
 .
 ├── main.js
 ├── map
@@ -57,6 +58,7 @@ Inside my source folder:
 │   ├── mapManager.js
 │   └── utils
 └── style.css
+```
 
 This makes it so the map logic is self-contained, and main can just call functions from the mapManager and change layer visibility as needed. 
 
