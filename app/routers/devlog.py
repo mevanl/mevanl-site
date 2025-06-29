@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -21,7 +21,7 @@ async def list_devlogs(request: Request, project: str) -> HTMLResponse:
     project_dir: Path = DEVLOG_DIR / project
 
     if not project_dir.exists() or not project_dir.is_dir():
-        return HTMLResponse("Project not found", status_code=404)
+        raise HTTPException(status_code=404, detail="project not found")
     
     posts: list[dict[str, str]] = []
    
@@ -37,7 +37,7 @@ async def list_devlogs(request: Request, project: str) -> HTMLResponse:
             "summary": meta.get("summary", "")
             })
 
-    # posts.sort(key=lambda p: p.get("date") or "", reverse=True)
+    posts.sort(key=lambda p: p.get("date") or "", reverse=True)
 
     return templates.TemplateResponse("devlog_project.html", {
         "request": request,
@@ -51,7 +51,7 @@ async def get_devlog_post(request: Request, project: str, post_name: str) -> HTM
     post_path: Path = DEVLOG_DIR / project / f"{post_name}.md"
 
     if not post_path.exists():
-        return HTMLResponse("Devlog not found", status_code=404)
+        raise HTTPException(status_code=404, detail="devlog not found")
 
     post: dict[str, str | dict[str, str]] = load_markdown_file(post_path)
 
